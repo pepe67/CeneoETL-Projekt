@@ -1,0 +1,71 @@
+﻿<Page
+    x:Class="ETLProject.Views.CommentsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ETLProject.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+       
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- page title -->
+            <Grid>
+
+                
+            <TextBlock x:Name="pageTitle" Text="device_name" Style="{StaticResource TitleTextBlockStyle}" Grid.Column="1" 
+                        IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="12,0,20,0"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <ScrollViewer Style="{StaticResource PageScrollViewerStyle}">
+                <StackPanel Orientation="Vertical" Margin="20,10,0,20" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Grid.Column="0">
+                    <ListView x:Name="CommentsList" ScrollViewer.HorizontalScrollBarVisibility="Disabled" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollMode="Enabled" SelectionMode="None">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+
+                                <RelativePanel HorizontalAlignment="Stretch">
+                                    <TextBlock x:Name="autor" Text="Autor: " Style="{StaticResource BodyTextBlockStyle}" FontWeight="Bold" RelativePanel.AlignTopWithPanel="True" RelativePanel.AlignLeftWithPanel="True"/>
+                                    <TextBlock Text="{Binding Autor}" Foreground="{ThemeResource SystemAccentColor}"  Style="{StaticResource BodyTextBlockStyle}" RelativePanel.RightOf="autor" Margin="2,0,0,0"/>
+                                    <TextBlock x:Name="data" Text="{Binding Data}" Style="{StaticResource BodyTextBlockStyle}" Margin="50,0,0,0" RelativePanel.Below="autor"/>
+                                    <TextBlock x:Name="polecam" Text="{Binding Polecam}" FontWeight="Bold" Foreground="Green" Style="{StaticResource BodyTextBlockStyle}" RelativePanel.Below="gwiazdki" RelativePanel.AlignRightWithPanel="True"/>
+                                    <TextBlock x:Name="gwiadkiTekst" Text="Ocena: " FontWeight="Bold" Style="{StaticResource BodyTextBlockStyle}" RelativePanel.LeftOf="gwiazdki" />
+                                    <TextBlock x:Name="gwiazdki" Text="{Binding Gwiazdki}" Foreground="Red" Style="{StaticResource BodyTextBlockStyle}" Margin="2,0,20,0" RelativePanel.AlignRightWithPanel="True" />
+                                    <TextBlock x:Name="tekstopinii" Text="{Binding TekstOpinii}" FontStyle="Italic" Style="{StaticResource BodyTextBlockStyle}" RelativePanel.Below="data"  />
+                                    <TextBlock x:Name="zalety" Text="Zalety: " FontWeight="Bold" Style="{StaticResource BodyTextBlockStyle}" RelativePanel.Below="tekstopinii" RelativePanel.AlignLeftWithPanel="True" />
+                                    <TextBlock x:Name="ZaletyBinding" Text="{Binding Zalety}" Style="{StaticResource BodyTextBlockStyle}" RelativePanel.Below="tekstopinii" RelativePanel.RightOf="zalety" />
+                                    <TextBlock x:Name="wady" Text="Wady: " FontWeight="Bold" Style="{StaticResource BodyTextBlockStyle}" RelativePanel.Below="ZaletyBinding"/>
+                                    <TextBlock x:Name="wadyBinding" Text="{Binding Wady}" Style="{StaticResource BodyTextBlockStyle}" RelativePanel.Below="ZaletyBinding" RelativePanel.RightOf="wady"/>
+                                    <TextBlock x:Name="przydatna" Text="Przydatność opinii: " FontWeight="Bold" Style="{StaticResource BodyTextBlockStyle}" RelativePanel.Below="wadyBinding" RelativePanel.AlignLeftWithPanel="True"/>
+                                    <TextBlock x:Name="przydatnaBinding" Text="{Binding Przydatna}" Margin="2,0,0,0" Style="{StaticResource BodyTextBlockStyle}" RelativePanel.Below="wadyBinding" RelativePanel.RightOf="przydatna"/>
+                                    <TextBlock x:Name="pochodzenie" Text="{Binding Pochodzenie}" Foreground="{ThemeResource SystemAccentColor}" Style="{StaticResource BodyTextBlockStyle}" RelativePanel.Below="przydatnaBinding" RelativePanel.AlignRightWithPanel="True"/>
+                                    <Rectangle Height="1" RelativePanel.Below="pochodzenie" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Fill="{ThemeResource SystemAccentColor}"/>
+                                </RelativePanel>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+
+
+
+    </Grid>
+</Page>

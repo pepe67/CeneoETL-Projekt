@@ -1,0 +1,54 @@
+﻿<Page
+    x:Class="ETLProject.Views.DevicesPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ETLProject.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    
+    mc:Ignorable="d">
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid>
+            <RelativePanel VerticalAlignment="Bottom">
+                <TextBlock Text="Przeglądanie wyników ETL" Style="{StaticResource TitleTextBlockStyle}" VerticalAlignment="Bottom" Margin="12,0,20,0"/>
+                <Button x:Name="ResetDataButton" Content="Wyczyść dane" Click="ResetDataButton_Click" RelativePanel.AlignRightWithPanel="True"/>
+            </RelativePanel>
+        </Grid>
+        
+        <Grid Grid.Row="1">
+            <TextBlock x:Name="EmptyDatabase" Text="Brak elementów! Wykonaj proces ETL by przeglądać wyniki"  HorizontalAlignment="Center" VerticalAlignment="Center" Opacity="0.5" Visibility="Collapsed"/>
+            <ScrollViewer Style="{StaticResource PageScrollViewerStyle}">
+                <StackPanel>
+                    <ListView x:Name="DevicesListView" SelectionChanged="DevicesListView_SelectionChanged" >
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <RelativePanel HorizontalAlignment="Stretch">
+                                    <TextBlock x:Name="Nazwa" Text="{Binding Name}" Style="{StaticResource BodyTextBlockStyle}" Foreground="{ThemeResource SystemAccentColor}" RelativePanel.AlignLeftWithPanel="True"/>
+                                    <TextBlock x:Name="ProducentText" Text="Producent:" RelativePanel.Below="Nazwa" FontWeight="Bold"/>
+                                    <TextBlock x:Name="ProducentBinding" Text="{Binding Manufacturer}" Style="{StaticResource BodyTextBlockStyle}" RelativePanel.RightOf="ProducentText" RelativePanel.Below="Nazwa" />
+                                    <TextBlock x:Name="InneText" Text="Inne atrybuty:" RelativePanel.Below="ProducentBinding" FontWeight="Bold"/>
+                                    <TextBlock x:Name="InneBinding" Text="{Binding Others}" Style="{StaticResource BodyTextBlockStyle}" RelativePanel.Below="InneText"/>
+                                    <Rectangle Height="1" RelativePanel.Below="InneBinding" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignRightWithPanel="True" Fill="{ThemeResource SystemAccentColor}"/>
+                                </RelativePanel>
+
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
+        
+    </Grid>
+</Page>

@@ -1,0 +1,76 @@
+﻿<Page
+    x:Class="ETLProject.Shell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ETLProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Page.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="SplitViewStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Page.Resources>
+
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="VisualStateGroup">
+                <VisualState x:Name="Narrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ShellSplitView.(SplitView.DisplayMode)" Value="Overlay"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Compact">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="700"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ShellSplitView.(SplitView.DisplayMode)" Value="CompactOverlay"/>
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="Wide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="1024"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="ShellSplitView.(SplitView.DisplayMode)" Value="CompactInline"/>
+                        <Setter Target="ShellSplitView.(SplitView.IsPaneOpen)" Value="True"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Background="{ThemeResource SystemChromeMediumColor}">
+            <Button Content="&#xE700;" Style="{StaticResource SplitViewHamburgerButtonStyle}" Click="OnHamburgerMenuButtonClicked"/>
+            <TextBlock Text="Ceneo ETL" Style="{StaticResource AppTitleTextBlockStyle}" />
+        </StackPanel>
+
+
+        <SplitView x:Name="ShellSplitView" CompactPaneLength="48" OpenPaneLength="220" Grid.Row="1">
+        <SplitView.Pane>
+            <StackPanel>
+                <!-- Back button -->
+                    <!--<RadioButton Tag="" Content="Wstecz" Style="{StaticResource SplitViewNavButtonStyle}" Click="OnBackButtonClicked" />-->
+
+                    <!-- Home button -->
+                    <RadioButton x:Name="MainPageButton" Tag="" Content="Wyszukiwanie" Style="{StaticResource SplitViewNavButtonStyle}" Click="OnHomeButtonChecked" IsChecked="True"/>
+
+                    <!-- Search button -->
+                    <RadioButton x:Name="DevicesPageButton" Tag="" Content="Przeglądanie danych" Style="{StaticResource SplitViewNavButtonStyle}" Click="OnSearchButtonChecked" />
+
+            </StackPanel>
+        </SplitView.Pane>
+        </SplitView>
+        </Grid>
+</Page>

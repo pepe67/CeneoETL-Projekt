@@ -1,0 +1,2 @@
+MainPackage=C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\bin\x86\Release\ETLProject_1.1.22.0_x86.appx
+SymbolPackage=C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\AppPackages\ETLProject_1.1.22.0_Test\ETLProject_1.1.22.0_x86.appxsym

@@ -1,0 +1,92 @@
+﻿<Page
+    x:Class="ETLProject.Views.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:ETLProject"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
+    
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <ScrollViewer Style="{StaticResource PageScrollViewerStyle}">
+            <StackPanel>
+                <TextBlock Text="Wyszukiwanie" Style="{StaticResource TitleTextBlockStyle}" />
+                <RelativePanel>
+                    <TextBox x:Name="AddressTBox" Text="{Binding AddresTextBoxText,Mode=TwoWay}" TextWrapping="Wrap" PlaceholderText="Wpisz Kod lub nazwę Produktu, który chcesz wyszukać." VerticalAlignment="Stretch" RelativePanel.AlignLeftWithPanel="True" RelativePanel.LeftOf="SearchButton"/>
+                    <Button x:Name="SearchButton" Command="{Binding SearchButtonCommand}" IsEnabled="{Binding SearchButtonEnabled}" Content="Szukaj" HorizontalAlignment="Right" VerticalAlignment="Stretch" RelativePanel.AlignRightWithPanel="True"  />
+                </RelativePanel>
+                <TextBlock x:Name="WynikTB" Style="{StaticResource TitleTextBlockStyle}" Text="Wynik wyszukiwania"/>
+                
+
+                <Grid MinHeight="250" MaxHeight="250">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*" />
+                        <ColumnDefinition Width="1*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" Grid.Row="0" Text="Wyniki z Ceneo:"/>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Text="Wyniki ze Skąpiec:"/>
+                    
+
+                    <ListView Grid.Column="0" Grid.Row="1" x:Name="CeneoLista" Background="Beige" Margin="0,0,2,0" SelectionMode="Single" ItemsSource="{Binding CeneoProductList}" SelectedItem="{Binding Path=SelectedCeneoLista, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,0,0,5" >
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="40"/>
+                                        <ColumnDefinition />
+                                    </Grid.ColumnDefinitions>
+                                    
+                                    <FontIcon Glyph=" " Grid.Column="0"/>
+                                    <TextBlock Text="{Binding CeneoNazwa}" TextWrapping="Wrap" Grid.Column="1"/>
+                                    <TextBlock Text="{Binding CeneoUrl}" Visibility="Collapsed"/>
+                                    
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <ListView Grid.Column="1" Grid.Row="1" x:Name="SkapiecLista" Background="Beige" Margin="2,0,0,0" SelectionMode="Single" ItemsSource="{Binding SkapiecProductList}" SelectedItem="{Binding Path=SelectedSkapiecLista, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,0,0,5" >
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="40"/>
+                                    <ColumnDefinition />
+                                </Grid.ColumnDefinitions>
+                                    <FontIcon Glyph=" " Grid.Column="0"/>
+                                    <TextBlock Text="{Binding SkapiecNazwa}" TextWrapping="Wrap" Grid.Column="1"/>
+                                    <TextBlock Text="{Binding SkapiecUrl}" Visibility="Collapsed"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                </Grid>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="50"/>
+                        <RowDefinition Height="210"/>
+                    </Grid.RowDefinitions>
+                    <RelativePanel Grid.Row="0">
+                        <Button x:Name="ExtractSingle" Command="{Binding ExtractButtonCommand}" IsEnabled="{Binding ExtractButtonEnabled,Mode=TwoWay}" RelativePanel.AlignLeftWithPanel="True" Margin="2,2,2,2">Extract</Button>
+                        <Button x:Name="TransformSingle" Command="{Binding TransformButtonCommand}" IsEnabled="{Binding TransformButtonEnabled,Mode=TwoWay}" RelativePanel.RightOf="ExtractSingle" Margin="2,2,2,2">Transform</Button>
+                        <Button x:Name="LoadSingle" Command="{Binding LoadButtonCommand}" IsEnabled="{Binding LoadButtonEnabled,Mode=TwoWay}" RelativePanel.RightOf="TransformSingle" Margin="2,2,2,2">Load</Button>
+                        <Button x:Name="ExtractTransformLoad" Command="{Binding ETLButtonCommand}" IsEnabled="{Binding ETLButtonEnabled,Mode=TwoWay}" RelativePanel.RightOf="LoadSingle" Margin="2,2,2,2">ETL Process</Button>
+                        <ProgressRing x:Name="Progress" Width="50" Height="50" IsActive="{Binding ProgressActive}" IsEnabled="True" RelativePanel.AlignRightWithPanel="True"/>
+                    </RelativePanel>
+                    
+                    <RelativePanel Grid.Row="1" x:Name="PanelText">
+                        <TextBox TextWrapping="Wrap" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignLeftWithPanel="True" RelativePanel.AlignBottomWithPanel="True" RelativePanel.AlignTopWithPanel="True" IsSpellCheckEnabled="False" IsTextPredictionEnabled="False" IsTapEnabled="False" Text="{Binding ResultTextBox,Mode=OneWay}" IsReadOnly="True" ScrollViewer.VerticalScrollBarVisibility="Visible"></TextBox>
+                    </RelativePanel>
+                </Grid>
+
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Page>
