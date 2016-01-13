@@ -1,1 +1,1 @@
-C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\AppPackages\ETLProject_1.1.23.0\ETLProject_1.1.23.0_x86_x64_arm.appxbundle
+C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\AppPackages\ETLProject_1.2.1.0\ETLProject_1.2.1.0_x86_x64_arm.appxbundle

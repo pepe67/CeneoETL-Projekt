@@ -77,7 +77,19 @@
 
         <list class="bullet">
           <listItem>
-            <para>Otwarcie projektu w Visual Studio 2015 Update 1, instalacja wymaganych dodatków i kompilacja aplikacji</para>
+            <para>
+              Otwarcie projektu w Visual Studio 2015 Update 1, instalacja wymaganych dodatków i kompilacja aplikacji (  
+              <externalLink>
+                <linkText>Visual Studio 2015</linkText>
+                <linkUri>https://www.visualstudio.com/pl-pl/products/visual-studio-community-vs.aspx</linkUri>
+                <linkTarget>_blank</linkTarget>
+              </externalLink> , 
+              <externalLink>
+              <linkText>Visual Studio 2015 - Update 1</linkText>
+              <linkUri>https://www.visualstudio.com/pl-pl/news/vs2015-update1-vs.aspx</linkUri>
+              <linkTarget>_blank</linkTarget>
+            </externalLink> ).
+          </para>
           </listItem>
           <listItem>
             <para>
@@ -107,6 +119,8 @@
 
 		<relatedTopics>
 			<link xlink:href="f100613b-8936-4797-a5ec-c60ab60a5b43" />
-		</relatedTopics>
+      <link xlink:href="0ee5da12-31f2-40e9-b9ca-2189a546c580" />
+      
+    </relatedTopics>
 	</developerConceptualDocument>
 </topic>

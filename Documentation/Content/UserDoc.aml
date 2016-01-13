@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="0ee5da12-31f2-40e9-b9ca-2189a546c580" revisionNumber="1">
+  <developerHowToDocument
+    xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+
+    
+    <summary>
+      <para>Dokumentacja użytkownika przedstawiająca instalację aplikacji ze sklepu Windows i użytkowanie aplikacji.</para>
+    </summary>
+
+
+    <introduction>
+      <para>Kolejne kroki</para>
+    </introduction>
+
+    <!-- Optional procedures followed by optional code example but must have
+         at least one procedure or code example -->
+    <procedure>
+      <title>Instalacja aplikacji ze sklepu Windows</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>Wyszukanie aplikacji w przeglądarce internetowej przy pomocy adresu:
+            <externalLink>
+<linkText>https://www.microsoft.com/pl-pl/store/apps/ceneoetl/9nblggh5jqp6/</linkText>
+<linkUri>https://www.microsoft.com/pl-pl/store/apps/ceneoetl/9nblggh5jqp6/</linkUri>
+<linkTarget>_blank</linkTarget>
+</externalLink>
+(Zostanie uruchomiona aplikacja Sklep Windows z wyszukaną aplikacją)
+</para>
+          </content>
+        </step>
+        <step>
+          <content>
+            <para>Pobranie aplikacji ze sklepu Windows, poprzez wciśnięcie przycisku Bezpłatna</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU1" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para>Aplikację można uruchomić bezpośrednio ze sklepu (po instalacji), lub z Menu Start.</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU2" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+      </steps>
+
+    </procedure>
+        
+     <procedure>
+      <title>Interfejs Aplikacji</title>
+      <steps class="ordered">
+        <step>
+          <content>
+            <para>Po lewej stronie widoczne jest Menu aplikacji. W sekcji głównej wyświetlana jest strona główna.</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU3" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para>Wyszukiwanie produktów należy zacząć od wpisania nazwy produktu w pole wyszukiwania i kliknięcia przycisku Szukaj.</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU4" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para>Po wyszukaniu produktów należy dopasować wyniki wyszukiwania względem siebie. Jeżeli któryś z nich się nie zgadza lub pole wynikowe jest puste, onazcza to, że produkt nie istnieje w danym serwisie lub należy zmienić frazę wyszukiwania.</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU5" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para>Zaznaczenie produktów skutkuje aktywacją przycisków Extract i ETL Process</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU6" />
+                <image xlink:href="DU7" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para>Kliknięcie przycisku Extract/Transform/Load/ETL Process skutkuje wyświetleniem okręgu, który informuje o trwającym procesie.</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU8" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para>Wynik procesu Ekstrakcji (po kliknięciu przycisku Extract) jest widoczny w polu tekstowym.</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU9" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para>Po procesie Ekstrakcji aktywuje się przycisk Transform. Wynik transformacji komentarzy widoczny jest w polu tekstowym.</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU10" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para>Po procesie Transformacji, przycisk procesu Ładowania aktywuje się. Kliknięcie przycisku powoduje wpisanie danych do bazy. Wynikiem jest stosowny komunikat w polu tekstowym. Wyświetlana jest nazwa produktu oraz ilość pobranych komentarzy.</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU11" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para>Po wykonaniu procesu ETL można przełączyć aplikację na drugi widok poprzez wybranie opcji "Przeglądanie danych". W oknie głównym widoczne są produkty dodane do bazy danych.</para>
+            <para>W prawym górnym rogu aplikacji pojawia się przycisk Wyczyść dane, który pozwala na wyczyszczenie bazy danych.</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU13" />
+              </mediaLinkInline>
+            </para>
+            <para>Przełączenie aplikacji na widok "Przeglądanie danych" bez uprzedniego wykonania procesu ETL skutkuje stosownym komunikatem.</para>
+            <para>
+            	<mediaLinkInline>
+            		<image xlink:href="DU12"/>
+            	</mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para>Kliknięcie na produkt na liście skutkuje otwarciem strony prezentacji komentarzy. Na górze okna po prawej stronie pojawia się przycisk "To CSV", który uruchamia procedurę zapisu komentarzy do pliku CSV.</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU14" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para>Procedura zapisu do pliku CSV</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DU15" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+        <step>
+          <content>
+            <para><legacyBold>Nawigacja po aplikacji</legacyBold>:</para>
+            <para>Niebieski przycisk ze strzałką - Powrót do poprzedniego widoku.</para>
+            <para>Szary przycisk z trzema prostokątami - Pozwala ukrywać menu aplikacji</para>
+            <para><legacyBold>Elementy menu</legacyBold>:</para>
+            <para>Wyszukiwanie - Przenosi do wyszukiwarki i procesu ETL</para>
+            <para>Przeglądanie danych - Przenosi do widoku przeglądania danych pobranych w procesie ETL</para>
+            <para>
+              <mediaLinkInline>
+                <image xlink:href="DUMenu" />
+              </mediaLinkInline>
+            </para>
+          </content>
+        </step>
+        
+      </steps>
+
+    </procedure>
+
+    <!-- <codeExample>Optional code example</codeExample> -->
+
+    <!-- <buildInstructions>Optional instructions for building a
+         code example.</buildInstructions> -->
+
+    <!-- <robustProgramming>Optional discussion of error handling and other
+         issues related to writing solid code.</robustProgramming> -->
+
+    <!-- <security>Optional discussion of security issues.</security> -->
+
+    <relatedTopics>
+      <!-- One or more of the following:
+           - A local link
+           - An external link
+           - A code entity reference
+
+      <link xlink:href="Other Topic's ID">Link text</link>
+      <externalLink>
+          <linkText>Link text</linkText>
+          <linkAlternateText>Optional alternate link text</linkAlternateText>
+          <linkUri>URI</linkUri>
+      </externalLink>
+      <codeEntityReference>API member ID</codeEntityReference>
+
+      Examples:
+
+      <link xlink:href="00e97994-e9e6-46e0-b420-5be86b2f8278">Some other topic</link>
+
+      <externalLink>
+          <linkText>SHFB on GitHub</linkText>
+          <linkAlternateText>Go to GitHub</linkAlternateText>
+          <linkUri>https://GitHub.com/EWSoftware/SHFB</linkUri>
+      </externalLink>
+
+      <codeEntityReference>T:TestDoc.TestClass</codeEntityReference>
+      <codeEntityReference>P:TestDoc.TestClass.SomeProperty</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.#ctor(System.String,System.Int32)</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.ToString</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.FirstMethod</codeEntityReference>
+      <codeEntityReference>M:TestDoc.TestClass.SecondMethod(System.Int32,System.String)</codeEntityReference>
+      -->
+    </relatedTopics>
+  </developerHowToDocument>
+</topic>

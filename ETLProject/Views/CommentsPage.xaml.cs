@@ -123,11 +123,18 @@ namespace ETLProject.Views
         }
 
         #endregion
-
+        /// <summary>
+        /// Metoda wywoływana przez przycisk "To CSV". Dzięki niej aplikacja zapisuje komentarze do danego produktu w pliku CSV.
+        /// Wszystkie elementy listy są przekazywane do konstrukora klasy CsvExport.
+        /// Następnie wywoływana jest metoda ExportToFile, której argumentem jest proponowana nazwa pliku.
+        /// Plik zapisywany jest w wybranej przez użytkownika lokalizacji.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ExportToCSVButton_Click(object sender, RoutedEventArgs e)
         {
             var csv = new CsvExport<Comment>(CommentsList.Items.ToList());
-            csv.ExportToFile(pageTitle.Text + " Comments.csv");
+            csv.ExportToFile(pageTitle.Text + " Comments");
         }
     }
 }

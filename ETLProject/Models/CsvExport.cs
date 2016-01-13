@@ -8,28 +8,44 @@ using Windows.Storage;
 
 namespace ETLProject.Models
 {
+    /// <summary>
+    /// Klasa zajmująca się eksportem danych do pliku CSV.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     class CsvExport<T> where T : class
     {
+        /// <summary>
+        /// Separator używany w pliku CSV
+        /// </summary>
         private const string ListSeparator = ";";
 
-        public IList<T> Objects;
+        /// <summary>
+        /// Obiekt listy przekazywany w konstruktorze klasy
+        /// </summary>
         private List<object> list;
 
-        public CsvExport(IList<T> objects)
-        {
-            Objects = objects;
-        }
 
+        /// <summary>
+        /// Konstruktor klasy
+        /// </summary>
+        /// <param name="list">Lista przyjmowana przez konstruktor</param>
         public CsvExport(List<object> list)
         {
             this.list = list;
         }
-
+        /// <summary>
+        /// metoda wywołująca metodę Export(boolincludeHeaderLine)
+        /// </summary>
+        /// <returns>Zwraca wynik wywoływanej metody</returns>
         public string Export()
         {
             return Export(true);
         }
-
+        /// <summary>
+        /// Metoda exportu danych z listy. Dołącza nagłówki (tj. nazwy pól z bazy danych)
+        /// </summary>
+        /// <param name="includeHeaderLine">Jeżeli true - dołącz nagłówki, jeżeli False - nagłówki nie są dołączane</param>
+        /// <returns>Zwraca ciąg znaków String zapisywany w pliku</returns>
         public string Export(bool includeHeaderLine)
         {
 
@@ -62,7 +78,13 @@ namespace ETLProject.Models
             return sb.ToString();
         }
 
-        //export to a file. 
+        /// <summary>
+        /// Metoda zajmująca się eksportem danych do pliku.
+        /// Ustawiany jest FileSavePicker, w tym rozszeżenie zapisywanego pliku, oraz jego sugerowana nazwa
+        /// Następnie sprawdzany jest warunek wyboru scieżki i pliku. Jeżeli plik został wybrany następuje zapis.
+        /// Jeżeli nie, metoda kończy się bez efektu.
+        /// </summary>
+        /// <param name="path">Nazwa pliku przekazywana przy kliknięciu przycisku wywołującego metodę.</param>
         public async void ExportToFile(string path)
         {
             var savePicker = new Windows.Storage.Pickers.FileSavePicker();
@@ -79,13 +101,12 @@ namespace ETLProject.Models
             
         }
 
-        //export as binary data. 
-        public byte[] ExportToBytes()
-        {
-            return Encoding.UTF8.GetBytes(Export());
-        }
 
-        //get the csv value for field. 
+        /// <summary>
+        /// Metoda sprawdzająca czy pole jest typu DateTime i przekształca je do wartości String.
+        /// </summary>
+        /// <param name="value">Zawartość sprawdzanego pola.</param>
+        /// <returns>Zwracana przekształcone dane.</returns>
         private string MakeValueCsvFriendly(object value)
         {
             if (value == null) return "";
