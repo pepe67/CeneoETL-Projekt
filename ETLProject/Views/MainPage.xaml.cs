@@ -18,10 +18,14 @@ using Windows.UI.Xaml.Navigation;
 namespace ETLProject.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Klasa widoku MainPage, w którym umieszczone są kontrolki wyszukiwania i procesu ETL.
+    /// Zawiera jedynie kontstruktor z inicjaliazcją.
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        /// <summary>
+        /// Konstruktor klasy Main Page
+        /// </summary>
         public MainPage()
         {
             this.InitializeComponent();

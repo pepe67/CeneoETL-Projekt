@@ -205,7 +205,7 @@ namespace ETLProject.Common
 
         /// <summary>
         /// Virtual method used by the <see cref="GoBackCommand"/> property
-        /// to invoke the <see cref="Windows.UI.Xaml.Controls.Frame.GoBack"/> method.
+        /// to invoke the method.
         /// </summary>
         public virtual void GoBack()
         {

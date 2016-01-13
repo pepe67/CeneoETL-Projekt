@@ -254,12 +254,21 @@ namespace ETLProject.Common
             frameState["Navigation"] = frame.GetNavigationState();
         }
     }
+    /// <summary>
+    /// 
+    /// </summary>
     public class SuspensionManagerException : Exception
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public SuspensionManagerException()
         {
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="e"></param>
         public SuspensionManagerException(Exception e)
             : base("SuspensionManager failed", e)
         {

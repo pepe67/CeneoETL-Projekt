@@ -13,15 +13,23 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
+
 
 namespace ETLProject
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// /// Projekt aplikacji ETL oparty na środowisku Windows 10 UWP.
+    /// Aplikacja działa zarówno na PC, tabletach jak i telefonach z systemem Windows 10.
+    /// Jest również dostępna do pobrania ze sklepu: https://www.microsoft.com/pl-pl/store/apps/ceneoetl/9nblggh5jqp6
+    /// 
+    /// Klasa widoku Shell. Jest to główne okno aplikacji oparte o kontrolkę SplitView.
     /// </summary>
     public sealed partial class Shell : Page
     {
+        /// <summary>
+        /// Konstruktor i inicjalizacja widoku Shell
+        /// </summary>
+        /// <param name="frame"></param>
         public Shell(Frame frame)
         {
             this.InitializeComponent();
@@ -31,7 +39,7 @@ namespace ETLProject
             var update = new Action(() =>
             {
 
-                // as long as your buttons are named the same as the page name with "Button" (i.e. HomePageButton) at the end this will work
+                // Zmiana stanu kontrolek po wciśnięciu przycisku wstecz.
                 if (((Frame)ShellSplitView.Content).SourcePageType.Name.ToString() != "CommentsPage") { 
                 var umb = (RadioButton)this.FindName(((Frame)ShellSplitView.Content).SourcePageType.Name.ToString() + "Button");
                 umb.IsChecked = true;
@@ -45,20 +53,34 @@ namespace ETLProject
 
 
         }
-
+        /// <summary>
+        /// Metoda otwierająca i zamykające "Hamburger" menu aplikacji.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnHamburgerMenuButtonClicked(object sender, RoutedEventArgs e)
         {
             ShellSplitView.IsPaneOpen = !ShellSplitView.IsPaneOpen;
             //((RadioButton)sender).IsChecked = false;
         }
-
+        /// <summary>
+        /// Kliknięcie opcji "Wyszukiwanie" w menu aplikacji wywołuje tą metodę, która ma za zadanie załadować stronę
+        /// wyszukiwania i procesu ETL.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnHomeButtonChecked(object sender, RoutedEventArgs e)
         {
             
             if (ShellSplitView.Content != null)
                 ((Frame)ShellSplitView.Content).Navigate(typeof(Views.MainPage));
         }
-
+        /// <summary>
+        /// Metoda wywoływana po wybraniu opcji Przeglądanie Wyników ETL w menu aplikacji.
+        /// Ma za zadanie załadowanie widoku przeglądania danych zapisanych w bazie SQLite w pamięci urządzenia.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void OnSearchButtonChecked(object sender, RoutedEventArgs e)
         {
             
@@ -66,9 +88,5 @@ namespace ETLProject
                 ((Frame)ShellSplitView.Content).Navigate(typeof(Views.DevicesPage));
         }
 
-        //private void OnBackButtonClicked(object sender, RoutedEventArgs e)
-        //{
-
-        //}
     }
 }

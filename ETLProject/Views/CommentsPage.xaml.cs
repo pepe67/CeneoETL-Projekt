@@ -21,7 +21,9 @@ using Windows.UI.Xaml.Navigation;
 namespace ETLProject.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Klasa widoku komentarzy.
+    /// Zawiera inicjalizację navigationHelper'a by obsłużyć przycisk wstecz
+    /// Obiekt ViewModel klasy CommentsViewModel pozwala odnosić się do "modelu widoku" tej ramki.
     /// </summary>
     public sealed partial class CommentsPage : Page
     {
@@ -31,11 +33,17 @@ namespace ETLProject.Views
 
         DateTime timestamp = DateTime.MinValue;
 
+        /// <summary>
+        /// Navigation helper obsługujący nawigację po aplikacji.
+        /// </summary>
         public NavigationHelper NavigationHelper
         {
             get { return this.navigationHelper; }
         }
 
+        /// <summary>
+        /// Konstruktor widoku.
+        /// </summary>
         public CommentsPage()
         {
             this.InitializeComponent();
@@ -45,6 +53,8 @@ namespace ETLProject.Views
         }
 
         /// <summary>
+        /// Domyślna metoda NavigationHelper generowana przez Visual Studio. Poniższy opis bez zmian.
+        /// 
         /// Populates the page with content passed during navigation. Any saved state is also
         /// provided when recreating a page from a prior session.
         /// </summary>
@@ -60,6 +70,8 @@ namespace ETLProject.Views
         }
 
         /// <summary>
+        /// Domyślna metoda NavigationHelper generowana przez Visual Studio. Poniższy opis bez zmian.
+        /// 
         /// Preserves state associated with this page in case the application is suspended or the
         /// page is discarded from the navigation cache.  Values must conform to the serialization
         /// requirements of <see cref="SuspensionManager.SessionState"/>.
@@ -73,15 +85,14 @@ namespace ETLProject.Views
 
         #region NavigationHelper registration
 
-        /// The methods provided in this section are simply used to allow
-        /// NavigationHelper to respond to the page's navigation methods.
-        /// 
-        /// Page specific logic should be placed in event handlers for the  
-        /// <see cref="GridCS.Common.NavigationHelper.LoadState"/>
-        /// and <see cref="GridCS.Common.NavigationHelper.SaveState"/>.
-        /// The navigation parameter is available in the LoadState method 
-        /// in addition to page state preserved during an earlier session.
 
+        /// <summary>
+        /// Metoda NavigationHelper'a. Pobiera dane przekazywane z widoku źródłowego (DevicesPage).
+        /// deviceId jest argumentem przekazywanym z widoku Produktów.
+        /// Następnie ładowany jest ViewModel DevicesViewModel by pobrać nazwę urządzenia (w celu wyświetlenia jako nagłówek strony)
+        /// Komentarze dla danego produkty są pobierane z bazy danych oraz przypisywane do listy i wyświetlane.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedTo(e);
@@ -101,7 +112,10 @@ namespace ETLProject.Views
 
             timestamp = DateTime.Now;
         }
-
+        /// <summary>
+        /// Domyślna metoda navigationHelper'a. Przesyła argumenty do innych widoków.
+        /// </summary>
+        /// <param name="e"></param>
         protected override void OnNavigatedFrom(NavigationEventArgs e)
         {
             navigationHelper.OnNavigatedFrom(e);

@@ -21,10 +21,13 @@ using SQLitePCL;
 namespace ETLProject
 {
     /// <summary>
-    /// Provides application-specific behavior to supplement the default Application class.
+    /// 
     /// </summary>
     sealed partial class App : Application
     {
+        /// <summary>
+        /// Obiekt SQLiteConnection mający na celu umożliwienie połączenia i obsługi bazy SQlite
+        /// </summary>
         public static SQLiteConnection conn;
         private Frame _rootFrame;
 

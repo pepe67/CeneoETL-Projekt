@@ -9,6 +9,9 @@ using System.Diagnostics;
 
 namespace ETLProject.ViewModels
 {
+    /// <summary>
+    /// ViewModel dla komentarzy
+    /// </summary>
     public class CommentsViewModel : TableViewModelBase<Comment, long>
     {
         private CommentsViewModel(long deviceId)
@@ -42,7 +45,11 @@ namespace ETLProject.ViewModels
                     defaultInstance.Timestamp = value;
             }
         }
-
+        /// <summary>
+        /// Pobranie komentarza dla danego Id Produktu
+        /// </summary>
+        /// <param name="deviceId"></param>
+        /// <returns></returns>
         public static CommentsViewModel GetForDeviceId(long deviceId)
         {
             lock (typeof(CommentsViewModel))
@@ -54,6 +61,10 @@ namespace ETLProject.ViewModels
             return instances[deviceId];
         }
 
+        /// <summary>
+        /// Domyślne pobieranie danych z tabeli Komentarzy
+        /// </summary>
+        /// <returns></returns>
         public static CommentsViewModel GetDefault()
         {
             lock (typeof(CommentsViewModel))
@@ -64,22 +75,18 @@ namespace ETLProject.ViewModels
 
             return defaultInstance;
         }
-
+        /// <summary>
+        /// Id produktu potrzebny do obsługi zapytań
+        /// </summary>
         public long DeviceId { get; private set; }
 
+        /// <summary>
+        /// Pobranie wszystkich komentarzy z tabeli Comment. Lub pobranie wszystkich komentarzy dla danego ID Produktu.
+        /// </summary>
+        /// <returns></returns>
         protected override string GetSelectAllSql()
         {
-            //this.id = id;
-            //this.deviceId = deviceId;
-            //this.zalety = zalety;
-            //this.wady = wady;
-            //this.podsumowanieOpinii = podsumowanieOpinii;
-            //this.gwiazdki = gwiazdki;
-            //this.autor = autor;
-            //this.data = data;
-            //this.polecam = polecam;
-            //this.przydatna = przydatna;
-            //this.pochodzenie = pochodzenie;
+            
             if (DeviceId < 0)
                 return @"SELECT Id, DeviceId, Zalety, Wady, TekstOpinii, Gwiazdki, Autor, Data, Polecam, Przydatnosc, Pochodzenie
                            FROM Comment
@@ -90,7 +97,11 @@ namespace ETLProject.ViewModels
                             WHERE DeviceId = ?
                             ORDER BY Id";
         }
-
+        /// <summary>
+        /// Metoda uzupełniająca zapytanie pobierające wszystkie komentarze z bazy.
+        /// Jeżeli Id Produktu jest mniejsze niż 0, to pobierane są wszystkie komentarze.
+        /// </summary>
+        /// <param name="statement"></param>
         protected override void FillSelectAllStatement(ISQLiteStatement statement)
         {
             if (DeviceId < 0)
@@ -98,7 +109,11 @@ namespace ETLProject.ViewModels
 
             statement.Bind(1, DeviceId);
         }
-
+        /// <summary>
+        /// Tworzenie nowego obiektu w tabeli Comment
+        /// </summary>
+        /// <param name="statement"></param>
+        /// <returns></returns>
         protected override Comment CreateItem(ISQLiteStatement statement)
         {
             Comment comment = new Comment(
@@ -117,26 +132,40 @@ namespace ETLProject.ViewModels
             Debug.WriteLine("Selected Comment author: ", comment.Autor);
             return comment;
         }
-
+        /// <summary>
+        /// Pobranie jednego komentarza z tabeli Comment
+        /// </summary>
+        /// <returns></returns>
         protected override string GetSelectItemSql()
         {
             return @"SELECT Id, DeviceId, Zalety, Wady, TekstOpinii, Gwiazdki, Autor, Data, Polecam, Przydatnosc, Pochodzenie
                            FROM Comment
                             WHERE Id = ?";
         }
-
+        /// <summary>
+        /// Wypełnienie zapytania pobierającego jeden komentarz z bazy
+        /// </summary>
+        /// <param name="statement"></param>
+        /// <param name="key"></param>
         protected override void FillSelectItemStatement(ISQLiteStatement statement, long key)
         {
             statement.Bind(1, key);
         }
-
+        /// <summary>
+        /// Zapytanie dodające nowy komentarz do bazy
+        /// </summary>
+        /// <returns></returns>
         protected override string GetInsertItemSql()
         {
             return @"INSERT INTO Comment (DeviceId, Zalety, Wady, TekstOpinii, Gwiazdki,
                     Autor, Data, Polecam, Przydatnosc, Pochodzenie) 
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         }
-
+        /// <summary>
+        /// Wypełnienie zapytania dodającego jeden komentarz z bazy
+        /// </summary>
+        /// <param name="statement"></param>
+        /// <param name="item"></param>
         protected override void FillInsertStatement(ISQLiteStatement statement, Comment item)
         {
             statement.Bind(1, item.DeviceId);
@@ -151,24 +180,40 @@ namespace ETLProject.ViewModels
             statement.Bind(10, item.Pochodzenie);
 
         }
-
+        /// <summary>
+        /// Zapytanie aktualizujące komentarz w bazie
+        /// </summary>
+        /// <returns></returns>
         protected override string GetUpdateItemSql()
         {
             return @"UPDATE Comment SET DeviceId = ?, Zalety = ?, Wady = ?, TekstOpinii = ?,
                         Gwiazdki = ?, Autor = ?, Data = ?, Polecam = ?, Przydatnosc = ?, Pochodzenie = ? 
                         WHERE Id = ?";
         }
-
+        /// <summary>
+        /// Wypełnienie zapytania aktualizującego komentarz
+        /// </summary>
+        /// <param name="statement"></param>
+        /// <param name="key"></param>
+        /// <param name="item"></param>
         protected override void FillUpdateStatement(ISQLiteStatement statement, long key, Comment item)
         {
             FillInsertStatement(statement, item);
             statement.Bind(11, key);
         }
-
+        /// <summary>
+        /// Zapytanie kasujące komentarz o danym ID
+        /// </summary>
+        /// <returns></returns>
         protected override string GetDeleteItemSql()
         {
             return "DELETE FROM Comment WHERE Id = ?";
         }
+        /// <summary>
+        /// Wypełnienie zapytania kasującego komentarz.
+        /// </summary>
+        /// <param name="statement"></param>
+        /// <param name="key"></param>
         protected override void FillDeleteItemStatement(ISQLiteStatement statement, long key)
         {
             statement.Bind(1, key);

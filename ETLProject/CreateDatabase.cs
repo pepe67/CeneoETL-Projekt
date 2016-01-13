@@ -7,9 +7,17 @@ using System.Threading.Tasks;
 
 namespace ETLProject
 {
+    /// <summary>
+    /// Klasa CreateDatabase zajmująca się obsługą bazy danych. Wliczając w to Tworzenie odpowiednich tabeli, relacji między nimi,
+    /// dodawania danych i ich pobierania.
+    /// </summary>
     class CreateDatabase
     {
-
+            /// <summary>
+            /// Metoda ma na celu utworzenie Tabeli w bazie danych (jeżeli nie istnieją i stworzenie odpowiednich relacji.
+            /// Ważnym elementem metody jest włączenie opcji relacyjnej bazy danych.
+            /// </summary>
+            /// <param name="db"></param>
             public static void LoadDatabase(SQLiteConnection db)
             {
                 string sql = @"CREATE TABLE IF NOT EXISTS
@@ -51,9 +59,14 @@ namespace ETLProject
                 }
             }
 
+        /// <summary>
+        /// Metoda czyszcząca bazę danych ze wszystkich informacji.
+        /// </summary>
+        /// <param name="db"></param>
+        /// <returns></returns>
             public async static Task ResetDataAsync(SQLiteConnection db)
             {
-                // Empty the Customer and Project tables 
+                // Empty the Device and Comment tables 
                 string sql = @"DELETE FROM Device";
                 using (var statement = db.Prepare(sql))
                 {
@@ -66,18 +79,18 @@ namespace ETLProject
                     statement.Step();
                 }
 
-                //List<Task> tasks = new List<Task>();
-
-                ////// Add seed Devices and Comments
-                //var cust1Task = InsertDevice(db, "xbox One", "Microsoft", "Inne");
-                //tasks.Add(cust1Task.ContinueWith((id) => InsertComment(db, id.Result, "zalety", "Wady", "autor", "opinia", "gwiazdki", "data", "Polecam", "1z2", "Opieo")));
-                //tasks.Add(cust1Task.ContinueWith((id) => InsertComment(db, id.Result, "zalety", "Wady", "autor", "opinia", "gwiazdki", "data", "Polecam", "1z2", "Opieo")));
-            
-                //await Task.WhenAll(tasks.ToArray());
 
            
         }
-
+        /// <summary>
+        /// Metoda dodająca nowy Produkt do bazy danych. Metoda jest używana w procesie ETL.
+        /// Dodatkowo zwracany jest ID dodanego urządzenia.
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="deviceName">Nazwa produktu pobrana w procesie ETL</param>
+        /// <param name="manufacturer">Producent produktu pobrany w procesie ETL</param>
+        /// <param name="others">Inne dane produktu pobrane w procesie ETL</param>
+        /// <returns></returns>
             public async static Task<long> InsertDevice(ISQLiteConnection db, string deviceName, string manufacturer, string others)
             {
                 try
@@ -113,8 +126,22 @@ namespace ETLProject
                     throw new Exception("Couldn't get inserted ID");
                 };
             }
-
-            public static Task InsertComment(ISQLiteConnection db, long deviceID, string zalety, string wady, string autor, string tekstOpinii, string gwiazdki, string data, string polecam, string przydatnosc, string pochodzenie)
+        /// <summary>
+        /// Metoda dodająca nowy komentarz dla danego produktu. Używana w procesie ETL.
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="deviceID">Id urządzenia z bazy danych</param>
+        /// <param name="zalety">Zalety wymienione w komentarzu, pobrane w procesie ETL</param>
+        /// <param name="wady">Wady wymienione w komentarzu, pobrane w procesie ETL</param>
+        /// <param name="autor">Autor komentarza, pobrany w procesie ETL</param>
+        /// <param name="tekstOpinii">Tekst Opinii pobrany w procesie ETL</param>
+        /// <param name="gwiazdki">Ocena wystawiona przez autora opinii. (Zaokrąglana do pełnych liczb w dół)</param>
+        /// <param name="data">Data dodania opinii na stonę</param>
+        /// <param name="polecam">Czy produkt jest polecany przez kupującego. Pole dotyczy jedynie strony Ceneo</param>
+        /// <param name="przydatnosc">Ocena przydatności komentarza.</param>
+        /// <param name="pochodzenie">Pochodzenie komentarza. Dzięki temu łatwo można odróżnić komentarze pobrane z Ceneo, od komentarzy pobranych ze Skąpca.</param>
+        /// <returns></returns>
+        public static Task InsertComment(ISQLiteConnection db, long deviceID, string zalety, string wady, string autor, string tekstOpinii, string gwiazdki, string data, string polecam, string przydatnosc, string pochodzenie)
             {
                 return Task.Run(() =>
                 {
@@ -142,7 +169,16 @@ namespace ETLProject
                     }
                 }
                 );
-            }
+        }
+        /// <summary>
+        /// Metoda ma na celu zwrócenie ID dowolnego produktu - zależnie od potrzeb.
+        /// Używana w czasie dodawania komentarzy. Dzięki niej produkty nie dublują się.
+        /// </summary>
+        /// <param name = "db" ></param>
+        ///<param name = "deviceName" > Nazwa produktu</param>
+        /// <param name="manufacturer">Producent produktu</param>
+        /// <param name="others">Inne dane produktu</param>
+        /// <returns></returns>
         public async static Task<long> GetDeviceId(ISQLiteConnection db, string deviceName, string manufacturer, string others)
         {
             long devIdReturn = 0;
@@ -177,8 +213,18 @@ namespace ETLProject
                 return devIdReturn;
             }
         }
-        //(int)deviceId, element.zalety, element.wady, element.autor, 
-        //element.podsumowanieOpinii, element.gwiazdki, element.data, element.polecam, element.przydatna, element.pochodzenie
+
+        /// <summary>
+        /// Metoda pobierająca ID dowolnego komentarza. Jest używana w czasie dodawania nowych komentarzy.
+        /// Dzięki niej komentarze nie są dublowane. W celu przyśpieszenia zapytania, nie są sprawdzane wszystkie pola.
+        /// </summary>
+        /// <param name="db"></param>
+        /// <param name="deviceId">Id urządzenia</param>
+        /// <param name="zalety">Zalety wymienione w komentarzu</param>
+        /// <param name="wady">Wady wymienione w komentarzu</param>
+        /// <param name="autor">Autor komentarza</param>
+        /// <param name="tekstOpinii">Tekst Opinii</param>
+        /// <returns></returns>
         public async static Task<long> GetCommentId(ISQLiteConnection db, int deviceId,
             string zalety, string wady,
             string autor, string tekstOpinii)
@@ -187,7 +233,7 @@ namespace ETLProject
             try
             {
                 await Task.Run(() =>
-                { //DeviceId, Zalety, Wady, Autor, TekstOpinii,
+                { 
                     using (var commId = db.Prepare("SELECT Id FROM Comment WHERE DeviceId = ? AND Zalety = ? AND Wady = ? AND Autor = ? AND TekstOpinii = ?"))
                     {
                         commId.Bind(1, deviceId);

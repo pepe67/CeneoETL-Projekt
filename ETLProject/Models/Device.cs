@@ -7,12 +7,18 @@ using System.Threading.Tasks;
 
 namespace ETLProject.Models
 {
+    /// <summary>
+    /// Klasa produktu zapisanego w bazie danych
+    /// </summary>
     public class Device : ViewModelBase
     {
 
         #region Properties
 
         private long id = -1;
+        /// <summary>
+        /// Id produktu
+        /// </summary>
         public long Id
         {
             get { return id; }
@@ -20,6 +26,9 @@ namespace ETLProject.Models
         }
 
         private string name = string.Empty;
+        /// <summary>
+        /// Nazwa produktu
+        /// </summary>
         public string Name
         {
             get { return name; }
@@ -27,6 +36,9 @@ namespace ETLProject.Models
         }
 
         private string manufacturer = string.Empty;
+        /// <summary>
+        /// Producent produktu
+        /// </summary>
         public string Manufacturer
         {
             get { return manufacturer; }
@@ -34,6 +46,9 @@ namespace ETLProject.Models
         }
 
         private string others = string.Empty;
+        /// <summary>
+        /// Inne dane o produkcie
+        /// </summary>
         public string Others
         {
             get { return others; }
@@ -41,6 +56,9 @@ namespace ETLProject.Models
         }
 
         private bool isDirty = false;
+        /// <summary>
+        /// Sprawdzenie czy produkt jest nadpisany
+        /// </summary>
         public bool IsDirty
         {
             get { return isDirty; }
@@ -61,7 +79,9 @@ namespace ETLProject.Models
             this.others = others;
             this.isDirty = false;
         }
-
+        /// <summary>
+        /// Sprawdzenie czy produkt jest nowy na liście.
+        /// </summary>
         public bool IsNew { get { return Id < 0; } }
     }
     }

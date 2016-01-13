@@ -15,23 +15,36 @@ using Windows.UI.Popups;
 
 namespace ETLProject.ViewModels
 {
+    /// <summary>
+    /// ViewModel dla widoku Wyszukiwania i procesu ETL
+    /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        /// <summary>
+        /// Lista znalezionych produktów w serwisie Ceneo
+        /// </summary>
         public ObservableCollection<Ceneo> _ceneoProductList = new ObservableCollection<Ceneo>();
+        /// <summary>
+        /// Lista znalezionych produktów w serwisie Skąpiec
+        /// </summary>
         public ObservableCollection<Skapiec> _skapiecProductList = new ObservableCollection<Skapiec>();
 
         Extract e = new Extract();
         Transform t = new Transform();
         List<Opinia> opinie = new List<Opinia>();
         string[] DeviceTransformedData = new string[3];
-
+        /// <summary>
+        /// Konstruktor ViewModelu
+        /// </summary>
         public MainViewModel()
         {
-            //AddCeneoProductList("Test Nazwa", "Test URL");
-            //AddSkapiecProductList("Test Nazwa", "Test URL");
 
         }
-
+        /// <summary>
+        /// Komenda wykonywana po wciśnięciu przycisku wyszukiwania.
+        /// Uruchamia metodę SearchMethodsStart(), która czyści wszelkie dane po wcześniejszych wyszukiwaniach a następnie wywołuje metody
+        /// mające na celu wyszukanie produktów na stronach.
+        /// </summary>
         public RelayCommand SearchButtonCommand
         {
             get
@@ -58,7 +71,13 @@ namespace ETLProject.ViewModels
             SearchButtonEnabled = true;
             ProgressActive = false;
         }
-
+        /// <summary>
+        /// Komenda wywoływana po wciśnięciu przycisku Ekstrakcji.
+        /// Rozpoczyna proces ekstrakcji danych poprzez wywołanie metody ExtractStart().
+        /// Metoda ExtractStart Dezaktywuje na pewien czas wszelkie przyciski i przeprowadza pobieranie źródeł stron internetowych.
+        /// W czasie ekstrakcji wświetlany jest okręg postępu.
+        /// Źródła są wyświetlane w oknie wynikowym.
+        /// </summary>
         public RelayCommand ExtractButtonCommand
         {
             get
@@ -86,7 +105,12 @@ namespace ETLProject.ViewModels
             
             TransformButtonEnabled = true;
         }
-
+        /// <summary>
+        /// Komenda wywoływana po wciśnięciu przycisku Transformacji.
+        /// Rozpoczyna proces transformacji pobranych źródeł poprzez wywołanie metody TransformStart(),
+        /// oraz dezaktywuje przyciski. Pojawia się okręg postępu,
+        /// który znika po zakończonej pracy. Dane (komentarze) pojawiają się w oknie wynikowym.
+        /// </summary>
         public RelayCommand TransformButtonCommand
         {
             get
@@ -114,7 +138,13 @@ namespace ETLProject.ViewModels
             
             LoadButtonEnabled = true;
         }
-
+        /// <summary>
+        /// Komenda wywoływana po wciśnięciu przycisku Ładowania.
+        /// Przetranformowane komentarze są ładowane do bazy danych przy użyciu metody LoadStart().
+        /// Deakywowane są przyciski. Pojawia się okręg postępu,
+        /// który znika po zakończonej pracy.
+        /// Wynik pracy (nazwa urządzenia) i ilość załadowanych komentarzy pojawia się w oknie wynikowym
+        /// </summary>
         public RelayCommand LoadButtonCommand
         {
             get
@@ -168,7 +198,13 @@ namespace ETLProject.ViewModels
             SearchButtonEnabled = true;
 
         }
-
+        /// <summary>
+        /// Komenda wywoływana po wciśnięciu przycisku ETL Process.
+        /// Przeprowadzany jest pełny proces ETL dzięki wywołaniu metody ETLStart().
+        /// Deakywowane są przyciski. Pojawia się okręg postępu,
+        /// który znika po zakończonej pracy.
+        /// Wynik pracy (nazwa urządzenia) i ilość załadowanych komentarzy pojawia się w oknie wynikowym
+        /// </summary>
         public RelayCommand ETLButtonCommand
         {
             get
@@ -318,15 +354,24 @@ namespace ETLProject.ViewModels
         {
             _skapiecProductList.Add(new Skapiec() { SkapiecNazwa = nazwa, SkapiecUrl = url });
         }
+        /// <summary>
+        /// Lista znalezionych urządzeń na portalu Ceneo
+        /// </summary>
         public ObservableCollection<Ceneo> CeneoProductList
         {
             get { return _ceneoProductList; }
         }
+        /// <summary>
+        /// Lista znalezionych urządzeń na portalu Skąpec
+        /// </summary>
         public ObservableCollection<Skapiec> SkapiecProductList
         {
             get { return _skapiecProductList; }
         }
         private string _AddresTextBoxText = string.Empty;
+        /// <summary>
+        /// Pole w którym wpisywane jest zapytanie do wyszukiwania produktów
+        /// </summary>
         public string AddresTextBoxText
         {
             get { return this._AddresTextBoxText; }
@@ -341,6 +386,9 @@ namespace ETLProject.ViewModels
             }
         }
         private string _ResultTextBox = "Testowe Wyszukiwania: \n gv-n960ixoc \n xbox one 500gb kinect";
+        /// <summary>
+        /// Pole wynikowe W nim prezentowane są wyniki pracy.
+        /// </summary>
         public string ResultTextBox
         {
             get { return this._ResultTextBox; }
@@ -355,6 +403,10 @@ namespace ETLProject.ViewModels
             }
         }
         private Ceneo _selectedCeneoLista;
+        /// <summary>
+        /// Atrybut, który pozwala określić, który produkt na liście wyników
+        /// wyszukiwania na portalu Ceneo został wybrany przez użytkownika
+        /// </summary>
         public Ceneo SelectedCeneoLista
         {
             get { return _selectedCeneoLista; }
@@ -372,6 +424,10 @@ namespace ETLProject.ViewModels
             }
         }
         private Skapiec _selectedSkapiecLista;
+        /// <summary>
+        /// Atrybut, który pozwala określić, który produkt na liście wyników
+        /// wyszukiwania na portalu Skąpiec został wybrany przez użytkownika
+        /// </summary>
         public Skapiec SelectedSkapiecLista
         {
             get { return _selectedSkapiecLista; }
@@ -389,6 +445,9 @@ namespace ETLProject.ViewModels
             }
         }
         private bool _searchButtonEnabled = true;
+        /// <summary>
+        /// Włączenie lub wyłączenie przycisku wyszukiwania
+        /// </summary>
         public bool SearchButtonEnabled
         {
             get { return _searchButtonEnabled; }
@@ -401,6 +460,9 @@ namespace ETLProject.ViewModels
             }
         }
         private bool _extractButtonEnabled = false;
+        /// <summary>
+        /// Włączenie lub wyłączenie przycisku ekstrakcji
+        /// </summary>
         public bool ExtractButtonEnabled
         {
             get { return _extractButtonEnabled; }
@@ -413,6 +475,9 @@ namespace ETLProject.ViewModels
             }
         }
         private bool _transformButtonEnabled = false;
+        /// <summary>
+        /// Włączenie lub wyłączenie przycisku transformacji
+        /// </summary>
         public bool TransformButtonEnabled
         {
             get { return _transformButtonEnabled; }
@@ -425,6 +490,9 @@ namespace ETLProject.ViewModels
             }
         }
         private bool _loadButtonEnabled = false;
+        /// <summary>
+        /// Włączenie lub wyłączenie przycisku ładowania
+        /// </summary>
         public bool LoadButtonEnabled
         {
             get { return _loadButtonEnabled; }
@@ -437,6 +505,9 @@ namespace ETLProject.ViewModels
             }
         }
         private bool _etlButtonEnabled = false;
+        /// <summary>
+        /// Włączenie lub wyłączenie przycisku pełnego procesu ETL
+        /// </summary>
         public bool ETLButtonEnabled
         {
             get { return _etlButtonEnabled; }
@@ -449,6 +520,9 @@ namespace ETLProject.ViewModels
             }
         }
         private bool _progressActive = false;
+        /// <summary>
+        /// Aktywacja i dezaktywacja Okręgu postępu prac.
+        /// </summary>
         public bool ProgressActive
         {
             get { return _progressActive; }
