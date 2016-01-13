@@ -97,6 +97,10 @@ Jest również dostępna do pobrania ze sklepu: https://www.microsoft.com/pl-pl/
     <Content Include="icons\Help.png" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="media\DATABASE.png">
+      <ImageId>DATABASE</ImageId>
+      <AlternateText>DATABASE</AlternateText>
+    </Image>
     <Image Include="media\DU1.png">
       <ImageId>DU1</ImageId>
       <AlternateText>DU 1</AlternateText>

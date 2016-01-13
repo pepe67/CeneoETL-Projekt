@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <topic id="31713618-dee9-4559-857b-e0533de5254a" revisionNumber="1">
 	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
 		<introduction>
@@ -116,6 +116,20 @@
         </list>
       </content>
 		</section>
+		
+		<section>
+			<title>Model Fizyczny bazy danych</title>
+      <content>
+        <para></para>
+		<para>
+              <mediaLinkInline>
+                <image xlink:href="DATABASE" />
+              </mediaLinkInline>
+        </para>
+        
+      </content>
+		</section>
+		
 
 		<relatedTopics>
 			<link xlink:href="f100613b-8936-4797-a5ec-c60ab60a5b43" />

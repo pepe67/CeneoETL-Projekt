@@ -37,10 +37,10 @@ namespace ETLProject
                                          Zalety        VARCHAR( 140 ),
                                          Wady VARCHAR( 140 ),
                                          Autor VARCHAR( 140 ),
-                                         TekstOpinii VARCHAR( 140 ),
-                                         Gwiazdki VARCHAR( 140 ),
+                                         TekstOpinii VARCHAR( 500 ),
+                                         Gwiazdki VARCHAR( 1 ),
                                          Data VARCHAR( 140 ),
-                                         Polecam VARCHAR( 140 ),
+                                         Polecam VARCHAR( 20 ),
                                          Przydatnosc VARCHAR( 140 ),
                                          Pochodzenie VARCHAR( 140 ),
                                          FOREIGN KEY(DeviceId) REFERENCES Device(Id) ON DELETE CASCADE 
