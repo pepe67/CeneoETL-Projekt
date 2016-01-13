@@ -19,10 +19,12 @@
         <!-- page title -->
             <Grid>
 
-                
-            <TextBlock x:Name="pageTitle" Text="device_name" Style="{StaticResource TitleTextBlockStyle}" Grid.Column="1" 
+            <RelativePanel VerticalAlignment="Bottom">
+                <TextBlock x:Name="pageTitle" Text="device_name" Style="{StaticResource TitleTextBlockStyle}" Grid.Column="1" 
                         IsHitTestVisible="false" TextWrapping="NoWrap" VerticalAlignment="Bottom" Margin="12,0,20,0"/>
-            </Grid>
+                <Button x:Name="ExportToCSV" Content="To CSV" Click="ExportToCSVButton_Click" RelativePanel.AlignRightWithPanel="True"/>
+            </RelativePanel>
+        </Grid>
 
             <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>

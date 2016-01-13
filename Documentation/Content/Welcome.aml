@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="31713618-dee9-4559-857b-e0533de5254a" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+		<introduction>
+			<para>Projekt Aplikacji ETL - CeneoETL pobierający komentarze dla wybranych produktów i zapisujący je w bazie danych SQLite umieszczonej
+      w pamięciu urządzenia.
+    Aplikacja napisana z wykorzystaniem języka C#, Dodatku HtmlAgilityPack oraz SQLite dla aplikacji Uniwersalnych Windows 10.
+    Autorzy: Piotr Kozak, Milena Fietko, Michał Filo</para>
+		</introduction>
+
+		<section>
+			<title>Obsługa dokumentacji</title>
+			<content>
+        <para>
+              Po lewej stronie okna widoczne są przestrzenie nazw użyte w projekcie. Każda przestrzeń rozwija się na Klasy.
+              Z kolei klasy rozwijają się na Parametry, konstruktor i metody użyte w klasie.
+        </para>
+			</content>
+		</section>
+    
+    <section>
+			<title>Wymagania projektu</title>
+			<content>
+				<para>By móc poprawnie kompilować projekt wymagane są:</para>
+
+        <list class="bullet">
+          <listItem>
+            <para>Komputer z systemem Windows 10 o numerze kompilacji conajmniej 10586.32 (kompilacja 10240 powinna działać, nie gwarantujemy, że zainstaluje się Update 1 do Visual Studio)</para>
+          </listItem>
+          <listItem>
+            <para>Microsoft Visual Studio 2015 z zainstalowanym Update 1</para>
+          </listItem>
+
+          <listItem>
+            <para>Pobranie Dodatku obsługującego SQLite dla uniwersalnych aplikacji Windows (Pobieranie i instalacja: Menu Tools -> Extensions and Updates -> Online -> SQLite for Universal App Platform)</para>
+          </listItem>
+
+          <listItem>
+            <para>Pobranie Dodatku obsługującego SQLite w projekcie poprzez NuGet (Pobieranie: Menu Tools -> NuGet Package Manager -> Manage Packages for Solution -> SQLitePCL. - Po uprzednim otwarciu projektu)</para>
+          </listItem>
+
+          <listItem>
+            <para>Pobranie Dodatku obsługującego HtmlAgilityPack w projekcie poprzez NuGet (Pobieranie: Menu Tools -> NuGet Package Manager -> Manage Packages for Solution -> HtmlAgilityPack - Po uprzednim otwarciu projektu)</para>
+          </listItem>
+
+        </list>
+			</content>
+		</section>
+    
+    <section>
+			<title>Wymagania aplikacji</title>
+			<content>
+				<para>Poniżej wymieniono podstawowe wymagania aplikacji.</para>
+
+        <list class="bullet">
+          <listItem>
+            <para>Komputer/Tablet z systemem Windows 10 o numerze kompilacji conajmniej 10240
+            lub Smaftfon z systemem Windows 10 Mobile o numerze kompilacji conajmniej 10240</para>
+          </listItem>
+          <listItem>
+            <para>Połączenie internetowe</para>
+          </listItem>
+
+          <listItem>
+            <para>Conajmniej 25MB w pamięci urządzenia (im więcej danych przechowywanych w bazie danych aplikacji tym więcej miejsca zajmuje)</para>
+          </listItem>
+
+        </list>
+			
+			</content>
+		</section>
+    
+    <section>
+			<title>Sposoby uruchomienia aplikacji</title>
+      <content>
+        <para>Poniżej wymieniono sposoby uruchomienia aplikacji.</para>
+
+        <list class="bullet">
+          <listItem>
+            <para>Otwarcie projektu w Visual Studio 2015 Update 1, instalacja wymaganych dodatków i kompilacja aplikacji</para>
+          </listItem>
+          <listItem>
+            <para>
+              Instalacja aplikacji z pliku (po uprzednim włączeniu możliwości instalacji aplikacji w Opcjach Deweloperskich w systemie Windows 10) i zastosowanie się do poradnika: 
+              <externalLink>
+                <linkText>https://msdn.microsoft.com/en-us/library/hh454036.aspx</linkText>
+                <linkUri>https://msdn.microsoft.com/en-us/library/hh454036.aspx</linkUri>
+                <linkTarget>_blank</linkTarget>
+              </externalLink>
+              (dział: Sideload your app package)
+            </para>
+          </listItem>
+
+          <listItem>
+            <para>
+              Pobranie aplikacji ze sklepu Windows (aplikacja nie jest publicznie widoczna, dlatego potrzebny jest poniższy odnośnik): 
+              <externalLink><linkText>https://www.microsoft.com/pl-pl/store/apps/ceneoetl/9nblggh5jqp6/</linkText>
+                <linkUri>https://www.microsoft.com/pl-pl/store/apps/ceneoetl/9nblggh5jqp6/</linkUri><linkTarget>_blank</linkTarget>
+              </externalLink>
+            </para>
+          </listItem>
+
+
+        </list>
+      </content>
+		</section>
+
+		<relatedTopics>
+			<link xlink:href="f100613b-8936-4797-a5ec-c60ab60a5b43" />
+		</relatedTopics>
+	</developerConceptualDocument>
+</topic>

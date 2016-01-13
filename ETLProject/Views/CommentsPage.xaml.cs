@@ -1,4 +1,5 @@
 ﻿using ETLProject.Common;
+using ETLProject.Models;
 using ETLProject.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -122,6 +123,12 @@ namespace ETLProject.Views
         }
 
         #endregion
+
+        private void ExportToCSVButton_Click(object sender, RoutedEventArgs e)
+        {
+            var csv = new CsvExport<Comment>(CommentsList.Items.ToList());
+            csv.ExportToFile(pageTitle.Text + " Comments.csv");
+        }
     }
 }
 

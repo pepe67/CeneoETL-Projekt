@@ -18,10 +18,6 @@ using Windows.UI.Xaml.Navigation;
 namespace ETLProject
 {
     /// <summary>
-    /// /// Projekt aplikacji ETL oparty na środowisku Windows 10 UWP.
-    /// Aplikacja działa zarówno na PC, tabletach jak i telefonach z systemem Windows 10.
-    /// Jest również dostępna do pobrania ze sklepu: https://www.microsoft.com/pl-pl/store/apps/ceneoetl/9nblggh5jqp6
-    /// 
     /// Klasa widoku Shell. Jest to główne okno aplikacji oparte o kontrolkę SplitView.
     /// </summary>
     public sealed partial class Shell : Page

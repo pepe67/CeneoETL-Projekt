@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Topics>
+  <Topic id="31713618-dee9-4559-857b-e0533de5254a" visible="True" isDefault="true" isSelected="true" title="Projekt aplikacji ETL - CeneoETL." linkText="https://www.microsoft.com/pl-pl/store/apps/ceneoetl/9nblggh5jqp6">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="Welcome" />
+    </HelpKeywords>
+  </Topic>
+  <Topic id="f100613b-8936-4797-a5ec-c60ab60a5b43" visible="True" isExpanded="true" title="Version History">
+    <HelpKeywords>
+      <HelpKeyword index="K" term="version, history" />
+    </HelpKeywords>
+    <Topic id="a79271f0-fc1e-4fdf-b7c0-673cac06832a" visible="True" title="Version 1.0.0.0">
+      <HelpKeywords>
+        <HelpKeyword index="K" term="version, 1.0.0.0" />
+      </HelpKeywords>
+    </Topic>
+  </Topic>
+</Topics>

@@ -110,6 +110,7 @@
     <Compile Include="Common\SuspensionManager.cs" />
     <Compile Include="CreateDatabase.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\CsvExport.cs" />
     <Compile Include="Models\Extract.cs" />
     <Compile Include="Models\Load.cs" />
     <Compile Include="Models\Opinia.cs" />
