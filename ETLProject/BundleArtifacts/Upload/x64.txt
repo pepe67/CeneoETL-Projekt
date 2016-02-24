@@ -1,2 +1,2 @@
-MainPackage=C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\bin\x64\Release\Upload\ETLProject_1.2.1.0_x64.appx
-SymbolPackage=C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\AppPackages\ETLProject_1.2.1.0\ETLProject_1.2.1.0_x64.appxsym
+MainPackage=C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\bin\x64\Release\Upload\ETLProject_1.2.2.0_x64.appx
+SymbolPackage=C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\AppPackages\ETLProject_1.2.2.0\ETLProject_1.2.2.0_x64.appxsym

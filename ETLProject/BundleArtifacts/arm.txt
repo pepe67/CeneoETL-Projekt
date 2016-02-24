@@ -1,3 +1,3 @@
-MainPackage=C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\bin\ARM\Release\ETLProject_1.2.1.0_ARM.appx
-SymbolPackage=C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\AppPackages\ETLProject_1.2.1.0_Test\ETLProject_1.2.1.0_ARM.appxsym
-ResourcePack=C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\bin\ARM\Release\ETLProject_1.2.1.0_language-en.appx
+MainPackage=C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\bin\ARM\Release\ETLProject_1.2.2.0_ARM.appx
+SymbolPackage=C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\AppPackages\ETLProject_1.2.2.0_Test\ETLProject_1.2.2.0_ARM.appxsym
+ResourcePack=C:\Users\Laptop\OneDrive\Programowanie\Visual Studio\Projects\ETLProject\ETLProject\bin\ARM\Release\ETLProject_1.2.2.0_language-en.appx

@@ -266,8 +266,16 @@ namespace ETLProject.ViewModels
                         foreach (HtmlNode product in productnames)
                         {
                             string url = product.Attributes["href"].Value;
-                            int indexOfSubstring = url.IndexOf("#");
-                            url = url.Substring(0, indexOfSubstring);
+                            if (url.IndexOf("#") > 0)
+                            {
+                                int indexOfSubstring = url.IndexOf("#");
+                                url = url.Substring(0, indexOfSubstring);
+                            }
+                            if (url.IndexOf("?nph") > 0)
+                            {
+                                int indexOfSubstring = url.IndexOf("?nph");
+                                url = url.Substring(0, indexOfSubstring);
+                            }
                             AddCeneoProductList(product.InnerHtml, "http://www.ceneo.pl" + url);
 
                         }
